@@ -99,14 +99,14 @@ var app = {
                 success,
                 app.onError
             );
-            // ble.write(
-            //     app.peripheral.id,
-            //     LED_SERVICE,
-            //     BRIGHTNESS_CHARACTERISTIC,
-            //     data.buffer,
-            //     success,
-            //     app.onError
-            // );
+            ble.write(
+                app.peripheral.id,
+                LED_SERVICE,
+                BRIGHTNESS_CHARACTERISTIC,
+                data.buffer,
+                success,
+                app.onError
+            );
             // ble.write(
             //     app.peripheral.id,
             //     LED_SERVICE,
