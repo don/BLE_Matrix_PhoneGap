@@ -78,9 +78,9 @@ var app = {
     },
     setBrightness: function() {
 
-        var data = new Uint8Array(1);
+        var data = new Uint8Array(2);
         data[0] = overallBrightness%256;
-        //data[1] = overallBrightness/256;
+        data[1] = overallBrightness/256;
         // data[2] = overallBrightness/(256*256);
         // data[3] = overallBrightness/(256*256*256);
 
@@ -88,8 +88,8 @@ var app = {
             console.log('Set brightness to ' + data[0]);// + ',' + data[1]);//+','+ data[2] + ',' + data[3]);
         };
 
-         console.log('app.peripheral -  ' + app.peripheral + ', app.peripheral.id ' + app.peripheral.id );
-
+        
+       
         if (app.peripheral && app.peripheral.id) {
             ble.write(
                 app.peripheral.id,
