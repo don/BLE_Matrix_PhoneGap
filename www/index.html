@@ -6,6 +6,7 @@
         <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link href='https://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
         <title>BLE Template</title>
     </head>
     <body>
@@ -17,11 +18,11 @@
                 <button id="refreshButton">Refresh</button>
             </div>
             <div id="detailPage">
-                <button id="onButton">All On</button>
-                <button id="offButton">All Off</button>
+                <button id="onButton" style="visibility:hidden">All On</button>
+                <button id="offButton" style="visibility:hidden">All Off</button>
                 <input type="text" name="bright" value="0" id="brightness" style="visibility:hidden"/>
                 <div id="grid"></div>
-                <button id="disconnectButton">Disconnect</button>
+                <button id="disconnectButton" style="visibility:hidden">Disconnect</button>
             </div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>

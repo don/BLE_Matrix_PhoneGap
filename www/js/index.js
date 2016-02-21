@@ -78,14 +78,14 @@ var app = {
     },
     setBrightness: function() {
 
-        var data = new Uint8Array(2);
+        var data = new Uint8Array(4);
         data[0] = overallBrightness%256;
         data[1] = overallBrightness/256;
-        // data[2] = overallBrightness/(256*256);
-        // data[3] = overallBrightness/(256*256*256);
+        data[2] = overallBrightness/(256*256);
+        data[3] = overallBrightness/(256*256*256);
 
         var success = function() {
-            console.log('Set brightness to ' + data[0]);// + ',' + data[1]);//+','+ data[2] + ',' + data[3]);
+            console.log('Set brightness to ' + data[0] + ',' + data[1]+','+ data[2] + ',' + data[3]);
         };
 
         
@@ -107,14 +107,22 @@ var app = {
                 success,
                 app.onError
             );
-            // ble.write(
-            //     app.peripheral.id,
-            //     LED_SERVICE,
-            //     BRIGHTNESS_CHARACTERISTIC,
-            //     data.buffer,
-            //     success,
-            //     app.onError
-            // );
+            ble.write(
+                app.peripheral.id,
+                LED_SERVICE,
+                BRIGHTNESS_CHARACTERISTIC,
+                data.buffer,
+                success,
+                app.onError
+            );
+            ble.write(
+                app.peripheral.id,
+                LED_SERVICE,
+                BRIGHTNESS_CHARACTERISTIC,
+                data.buffer,
+                success,
+                app.onError
+            );
             // ble.write(
             //     app.peripheral.id,
             //     LED_SERVICE,
@@ -154,7 +162,7 @@ function allOn(){
     {
         var id = 'gridButton'+i ; 
         var b = document.getElementById(id);
-        b.style = "background-color:#ffffff";
+        b.style = "background-color:#e9e9e9";
         buttonValue[i] = 1;
     }
     overallBrightness = 65535*65535;
@@ -165,7 +173,7 @@ function allOff(){
     {
         var id = 'gridButton'+i ; 
         var b = document.getElementById(id);
-        b.style = "background-color:#000000";
+        b.style = "background-color:#555";
         buttonValue[i] = 0;
     }
     overallBrightness = 0;
@@ -188,13 +196,13 @@ function drawGrid(){
                 console.log( 'this is buttonValue' + this.dataset.index+ ',' + buttonValue[this.dataset.index]);
                 if(buttonValue[this.dataset.index] === 0)
                 {
-                    this.style = "background-color:#ffffff";
+                    this.style = "background-color:#e9e9e9";
                     buttonValue[this.dataset.index] = 1;
                     br += Math.pow(2,parseInt(this.dataset.index));
                 }
                 else
                 {
-                    this.style = "background-color:#000000";
+                    this.style = "background-color:#555";
                     buttonValue[this.dataset.index] = 0;
                     br -= Math.pow(2,parseInt(this.dataset.index));
                 }
