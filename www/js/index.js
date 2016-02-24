@@ -86,9 +86,7 @@ var app = {
 
         var success = function() {
             console.log('Set brightness to ' + data[0] + ',' + data[1]+','+ data[2] + ',' + data[3]);
-        };
-
-        
+        };        
        
         if (app.peripheral && app.peripheral.id) {
             ble.write(
@@ -98,40 +96,7 @@ var app = {
                 data.buffer,
                 success,
                 app.onError
-            );
-            ble.write(
-                app.peripheral.id,
-                LED_SERVICE,
-                BRIGHTNESS_CHARACTERISTIC,
-                data.buffer,
-                success,
-                app.onError
-            );
-            ble.write(
-                app.peripheral.id,
-                LED_SERVICE,
-                BRIGHTNESS_CHARACTERISTIC,
-                data.buffer,
-                success,
-                app.onError
-            );
-            ble.write(
-                app.peripheral.id,
-                LED_SERVICE,
-                BRIGHTNESS_CHARACTERISTIC,
-                data.buffer,
-                success,
-                app.onError
-            );
-            // ble.write(
-            //     app.peripheral.id,
-            //     LED_SERVICE,
-            //     BRIGHTNESS_CHARACTERISTIC,
-            //     data.buffer,
-            //     success,
-            //     app.onError
-            // );
-            
+            );            
         }
     },
     showMainPage: function() {
